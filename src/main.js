@@ -21,7 +21,7 @@ Vue.component('he-ader',Header)
 
 
 //引入公用样式表
-import './../gongyong.css'
+import './../static/css/reset.css'
 //我们局部使用插件或者说不需要引入很全面的mint-ui，因为全部映入进来的话会非常的庞大，所以采用局部使用
 import {Button,Lazyload,Loadmore,Swipe,SwipeItem,Actionsheet,TabContainer, TabContainerItem,Cell,Tabbar, TabItem,IndexList, IndexSection} from 'mint-ui'
 
