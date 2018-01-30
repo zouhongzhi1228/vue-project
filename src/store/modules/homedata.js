@@ -9,22 +9,22 @@ const homedata = {
   },
   actions:{
     getBannerData(context,payload){
-      axios('http://localhost:3000/api/banner').then(res=>{
+      axios('http://10.9.171.5:3000/api/banner').then(res=>{
         context.commit('initBannerData',{bannerData:res.data.data})
       })
     },
     getNavData(context,payload){
-      axios('http://localhost:3000/api/navigation').then(res=>{
+      axios('http://10.9.171.5:3000/api/navigation').then(res=>{
         context.commit('initNavData',{navData:res.data.data})
       })
     },
     getNewYearData(context,payload){
-      axios('http://localhost:3000/api/newyear').then(res=>{
+      axios('http://10.9.171.5:3000/api/newyear').then(res=>{
         context.commit('initNewYearData',{newYearData:res.data.data})
       })
     },
     getBrandData(context,payload){
-      axios('http://localhost:3000/api/brand').then(res=>{
+      axios('http://10.9.171.5:3000/api/brand').then(res=>{
         context.commit('initBrandData',{BrandData:res.data.data})
       })
     }

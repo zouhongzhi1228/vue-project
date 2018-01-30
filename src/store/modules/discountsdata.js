@@ -8,7 +8,7 @@ const discountsdata = {
   actions:{
     getDiscountsData(context,payload){
       console.log(payload)
-      axios('http://localhost:3000/api/'+payload.route).then(res=>{
+      axios('http://10.9.171.5/api/'+payload.route).then(res=>{
         context.commit('initDiscountsData',{discountsData:res.data.data})
       })
     },
