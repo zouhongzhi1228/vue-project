@@ -1,18 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-//使用自定义的组件
-//import HomePage from '@/modules/HomePage/HomePage'
-import Swipe from '@/Swipe'
+import Register from '../modules/User/Reg'
+import Login from '../modules/User/Login'
+import ProductClass from '../modules/Product/Class'
+import Cart from '../modules/Product/Cart'
 
 Vue.use(Router)
 export default new Router({
   routes: [
-   
+   {
+      path: '/register',
+      name: 'register',
+      component: Register
+    },
     {
-      path: '/swipe',
-      name: 'swipe',
-      component: Swipe
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/productClass',
+      name: 'productClass',
+      component: ProductClass
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: Cart
     }
   ]
 })
