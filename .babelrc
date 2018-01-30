@@ -13,7 +13,16 @@
       {
         "libraryName": "mint-ui",
         "style": true
+<<<<<<< HEAD
       }
     ]]
   ]
+=======
+      },
+      {
+	      "libraryName": "element-ui",
+	      "styleLibraryName": "theme-chalk"
+	    }
+    ]]]
+>>>>>>> 20180122-yh-register
 }

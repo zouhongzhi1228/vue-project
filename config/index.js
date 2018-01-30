@@ -16,6 +16,11 @@ module.exports = {
           "target": "http://m.loho88.com",
           "changeOrigin": true,
           "pathRewrite": { "^/loho" : "" }
+        },
+        "/sephora": {
+        	"target": "https://api.sephora.cn",
+          "changeOrigin": true,
+          "pathRewrite": { "^/sephora" : "" }
         }
         
     },
