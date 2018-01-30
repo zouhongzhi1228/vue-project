@@ -1,0 +1,31 @@
+{
+  "product": 
+  [{"skuPic": "https://ssl1.sephorastatic.cn/products/4/2/6/5/5/5/1_n_05742_210x210.jpg","skuName": "蒂佳婷水源悦活面膜礼盒(6盒装面膜礼盒)","Price": "650"},{"skuPic": "https://ssl1.sephorastatic.cn/products/3/5/9/8/0/3/1_n_05681_210x210.jpg","skuName": "纪梵希高定香榭丰唇膏(小粉唇)","Price": "320"},{"skuPic": "https://ssl3.sephorastatic.cn/products/4/2/1/3/9/3/1_n_05748_210x210.jpgg","skuName": "兰蔻密集肌底精华节日尊享礼盒（小黑瓶）","Price": "1450"}]
+}
+[
+  {
+    "skuPic": "https://ssl1.sephorastatic.cn/products/4/2/6/5/5/5/1_n_05742_210x210.jpg",
+    "skuName": "蒂佳婷水源悦活面膜礼盒(6盒装面膜礼盒)",
+    "Price": "650"
+  },{
+    "skuPic": "https://ssl1.sephorastatic.cn/products/3/5/9/8/0/3/1_n_05681_210x210.jpg",
+    "skuName": "纪梵希高定香榭丰唇膏(小粉唇)",
+    "Price": "320"
+  },{
+    "skuPic": "https://ssl3.sephorastatic.cn/products/4/2/1/3/9/3/1_n_05748_210x210.jpgg",
+    "skuName": "兰蔻密集肌底精华节日尊享礼盒（小黑瓶）",
+    "Price": "1450"
+  }
+]
+
+INSERT INTO `sephora`.`allbrand` (`brand_id`, `brandName`, `brand_logo`, `brand_show`) VALUES (NULL, 'LANCOME', 'https://ssl2.sephorastatic.cn/wcsfrontend/brand/lancome/lancome_144X60.png', ''),(NULL, 'Nuxe', 'https://ssl3.sephorastatic.cn/wcsfrontend/brand/nuxe/nuxe_144X60.png', ''),(NULL, 'SEPHORA', 'https://ssl1.sephorastatic.cn/wcsfrontend/brand/sephoracollection/sephoracollection_144X60.png', ''),(NULL, 'LOEWA', 'https://ssl2.sephorastatic.cn/wcsfrontend/brand/loewe/loewe_144X60.png', ''),(NULL, 'SEPHORA', 'https://ssl1.sephorastatic.cn/wcsfrontend/brand/sephoracollection/sephoracollection_144X60.png', ''),(NULL, 'LANCOME', 'https://ssl2.sephorastatic.cn/wcsfrontend/brand/lancome/lancome_144X60.png', ''),(NULL, 'Nuxe', 'https://ssl3.sephorastatic.cn/wcsfrontend/brand/nuxe/nuxe_144X60.png', ''),(NULL, 'SEPHORA', 'https://ssl1.sephorastatic.cn/wcsfrontend/brand/sephoracollection/sephoracollection_144X60.png', ''),(NULL, 'LOEWA', 'https://ssl2.sephorastatic.cn/wcsfrontend/brand/loewe/loewe_144X60.png', ''),(NULL, 'SEPHORA', 'https://ssl1.sephorastatic.cn/wcsfrontend/brand/sephoracollection/sephoracollection_144X60.png', ''),(NULL, 'LANCOME', 'https://ssl2.sephorastatic.cn/wcsfrontend/brand/lancome/lancome_144X60.png', ''),(NULL, 'Nuxe', 'https://ssl3.sephorastatic.cn/wcsfrontend/brand/nuxe/nuxe_144X60.png', ''),(NULL, 'SEPHORA', 'https://ssl1.sephorastatic.cn/wcsfrontend/brand/sephoracollection/sephoracollection_144X60.png', ''),(NULL, 'LOEWA', 'https://ssl2.sephorastatic.cn/wcsfrontend/brand/loewe/loewe_144X60.png', ''),(NULL, 'SEPHORA', 'https://ssl1.sephorastatic.cn/wcsfrontend/brand/sephoracollection/sephoracollection_144X60.png', ''),(NULL, 'LANCOME', 'https://ssl2.sephorastatic.cn/wcsfrontend/brand/lancome/lancome_144X60.png', ''),(NULL, 'Nuxe', 'https://ssl3.sephorastatic.cn/wcsfrontend/brand/nuxe/nuxe_144X60.png', ''),(NULL, 'SEPHORA', 'https://ssl1.sephorastatic.cn/wcsfrontend/brand/sephoracollection/sephoracollection_144X60.png', ''),(NULL, 'LOEWA', 'https://ssl2.sephorastatic.cn/wcsfrontend/brand/loewe/loewe_144X60.png', '');
+
+
+
+
+
+
+INSERT INTO `sephora`.`newyear` (`newyear_id`, `pro_url1`, `pro_url2`) VALUES (NULL, 'https://ssl3.sephorastatic.cn/wcsfrontend/campaign/mobile_img/2018/01/banner/m_mask_20180118.jpg', '[{"skuPic": "https://ssl1.sephorastatic.cn/products/V/S/9/5/9/5/5/7/1_n_05769_210x210.jpg","skuName": "兰蔻肌底精华浸润修护面膜惠选套装","Price": "600"},{"skuPic": "https://ssl3.sephorastatic.cn/products/4/1/9/2/0/3/1_n_05579_210x210.jpg","skuName": "欧树植物奶舒缓补水清爽面膜","Price": "175"},{"skuPic": "https://ssl3.sephorastatic.cn/products/V/S/9/2/2/0/7/2/1_n_05769_210x210.jpg","skuName": "兰芝夜间修护睡眠面膜双支惠选套装","Price": "390"}]'),(NULL, 'https://ssl4.sephorastatic.cn/wcsfrontend/campaign/mobile_img/2018/01/banner/m_ranking_20180124.jpg', '[{"skuPic": "https://ssl1.sephorastatic.cn/products/V/S/9/5/6/5/0/2/1_n_05779_210x210.jpg","skuName": "兰蔻“小黑瓶”新年红限量版惠选套装","Price": "1720"},{"skuPic": "https://ssl3.sephorastatic.cn/products/4/2/6/1/7/6/1_n_05748_210x210.jpg","skuName": "娇兰臻彩宝石唇膏（限量版）","Price": "480"},{"skuPic": "https://ssl1.sephorastatic.cn/products/4/0/2/9/7/8/1_n_05520_210x210.jpg","skuName": "克丽丝汀迪奥真我香水圣诞礼盒","Price": "1030"}]'),(NULL, 'https://ssl3.sephorastatic.cn/wcsfrontend/campaign/mobile_img/2018/01/banner/m_whatsnew_20180119.jpg', '[{"skuPic": "https://ssl1.sephorastatic.cn/products/3/5/6/0/3/3/1_n_05748_210x210.jpg","skuName": "芭比波朗密集修护菁华粉底液","Price": "620"},{"skuPic": "https://ssl3.sephorastatic.cn/products/4/2/2/0/1/0/1_n_05748_210x210.jpg","skuName": "克丽丝汀迪奥未来新肌精华","Price": "790"},{"skuPic": "https://ssl1.sephorastatic.cn/products/V/S/9/5/9/5/3/9/1_n_05669_210x210.jpg","skuName": "蔚蓝之美明王朝御容修护眼霜惠选套装","Price": "820"}]');
+
+
+
