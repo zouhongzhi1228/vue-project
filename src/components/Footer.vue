@@ -25,8 +25,8 @@ export default {
       isSlected:'首页',
       nav: [ 
         {title: '首页', url: require('./images/xiaotubiao_02.png'), url_one: require('./images/xiaotubiao_17.png'),path: '/'}, 
-        {title: '分类', url: require('./images/xiaotubiao_04.png'), url_one: require('./images/xiaotubiao_18.png'), path: '/classpage'}, 
-        {title: '优惠专享', url: require('./images/xiaotubiao_06.png'), url_one: require('./images/xiaotubiao_19.png'), path: '/promotionpage'}, 
+        {title: '分类', url: require('./images/xiaotubiao_04.png'), url_one: require('./images/xiaotubiao_18.png'), path: '/productClass'}, 
+        {title: '优惠专享', url: require('./images/xiaotubiao_06.png'), url_one: require('./images/xiaotubiao_19.png'), path: '/discounts'}, 
         {title: '购物车', url: require('./images/xiaotubiao_08.png'), url_one: require('./images/xiaotubiao_20.png'), path: '/cartpage'}, 
         {title: '我的', url: require('./images/xiaotubiao_10.png'), url_one: require('./images/xiaotubiao_21.png'), path: '/mainpage'} 
       ]
@@ -48,7 +48,7 @@ export default {
                       }
                     }) 
           break 
-        case '优惠专享': this.$router.push('/promotionpage/red') 
+        case '优惠专享': this.$router.push('/discounts') 
           break 
         case '购物车': this.$router.push('/cartpage') 
           break 

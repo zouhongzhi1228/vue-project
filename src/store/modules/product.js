@@ -4,7 +4,8 @@ export default {
 	namespaced: true,
 	state: {
 		classList: [],
-		classData: []
+		classData: [],
+		detailData: {}
 	},
 	getters: {
 		classList: function(state) {
@@ -12,6 +13,9 @@ export default {
 		},
 		classData: function(state) {
 			return state.classData || []
+		},
+		detailData: function(state) {
+			return state.detailData || {}
 		}
 	},
 	mutations: {
@@ -23,6 +27,9 @@ export default {
 				imgSrc: classData.imgSrc,
 				classData: classData.classData
 			}
+		},
+		setDetailData(state,{detailData}){
+			state.detailData = detailData
 		}
 	},
 	actions: {
@@ -34,13 +41,16 @@ export default {
 			})
 		},
 		getClassData (context, id) {
-			console.log(id)
 			axios(`http://10.9.171.35:3000/product/classData?id=${id}`).then(res=>{
-				console.log(res)
 				context.commit('setClassData', {
-					imgSrc: res.data.imgSrc,
-					classData: res.data.classData
+					imgSrc: res.data.img.imgSrc,
+					classData: res.data.goodsData
 				})
+			})
+		},
+		getDetailData ({commit}, payload) {
+			commit('setDetailData',{
+				detailData: payload
 			})
 		}
 	}

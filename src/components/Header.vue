@@ -10,7 +10,7 @@
         <img src="./images/SEPHORA_black.png">
       </div>
       <div>
-        <a href="javascript:;">登录</a>
+        <a href="/login">{{tit}}</a>
       </div>
     </div>
     <div id='v-header-bottom'>
@@ -22,7 +22,13 @@
 </template>
 <script>
 export default {
-  name: 'v-header'
+  name: 'v-header',
+  props: {
+		tit: {
+			type: String,
+			default: '登录'
+		}
+	}
 }
 </script>
 <style lang='scss' scoped>

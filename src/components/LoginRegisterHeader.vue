@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'l-r-header',
+	name: 'l-r-header',
   props: {
 		tit: {
 			type: String,

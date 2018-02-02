@@ -8,9 +8,9 @@
 			<div class="tit"></div>
 		</div>
 		<div class="main">
-			<div class="pro_item" v-for="(ele,index) in cartData">
+			<div class="pro_item" v-for="(ele,index) in cartData" v-if="cartData.length?true:false">
 				<div class="pro_cheack">
-					<el-checkbox v-model="ele.checked"></el-checkbox>
+					<input type="checkbox" ref="check" @click="flag(index,ele.pro_price,ele.num)" />
 				</div>
 				<div class="pro_img">
 					<a href="javascript:;">
@@ -19,29 +19,37 @@
 				</div>
 				<div class="pro_text">
 					<p class="pro_name">{{ele.pro_name}}</p>
-					<p class="pro_row">{{ele.pro_row}}</p>
 					<p class="pro_price">
 						<em>¥{{ele.pro_price}}</em>
 					</p>
 				</div>
 				<div class="pro_num">
-					<span class="pro_sub" @click="sub(ele.pro_price,index)">-</span>
+					<span class="pro_sub" @click="sub(ele.uid,ele.num,ele.pro_price,index)">-</span>
 					<span class="pro_cont">{{ele.num}}</span>
-					<span class="pro_add" @click="add(ele.pro_price,index)">+</span>
+					<span class="pro_add" @click="add(ele.uid,ele.num,ele.pro_price,index)">+</span>
 				</div>
+				<div class="subBtn">
+					<a @click="update(ele.uid)" href="javascript:;">删除商品</a>
+				</div>
+			</div>
+			<div v-if="cartData.length==0?true:false">
+				<div class="nullCart">你的购物车空空如也</div>
 			</div>
 		</div>
 		<div class="footer">
 			<div class="allCheack">
-				<el-checkbox v-model="allChecked"></el-checkbox>
+				<span @click="all">
+					<el-checkbox  v-model="checked"></el-checkbox>
+				</span>
 				<span>全选</span>
 			</div>
 			<div class="allPrcie">
 				<span>合计:</span>
 				<em>¥{{allPrice}}</em>
 			</div>
-			<button>结算<span>({{cartData[0].num}})</span></button>
+			<button>结算<span>{{n}}</span></button>
 		</div>
+		<!--<el-button type="text" @click="open2"></el-button>-->
 	</div>
 </template>
 
@@ -51,34 +59,121 @@
 		data　()　{
 			return {
 				allChecked: false,
-				allPrice: 0
+				allPrice: 0,
+				checked: false,
+				n: 0
 			}
 		},
 		methods: {
-			sub(price,index){
-				
-				if(this.cartData[index].num != 0) {
-					this.cartData[index].num = this.cartData[index].num -1
+			...mapActions('cart',	[
+				'getCartData',
+				'addNum',
+				'subNum',
+				'updateData'
+			]),
+			sub(id,num,price,index){
+				if(num>0){
+					this.subNum(id)
+					setTimeout(()=>{
+						this.getCartData()
+					},100)
+					if(this.$refs.check[index].checked){
+						this.allPrice -= price
+						this.n -= 1
+					}
+				}else{
+					num = 0
 				}
-				if(this.cartData[index].checked) {
-					console.log(this.cartData[index].num)
-					this.allPrice = price * (this.cartData[index].num)
-				}
-				console.log(this.cartData[index].checked)
 			},
-			add(price,index){
-				console.log(index)
-				this.cartData[index].num = this.cartData[index].num + 1
-				if(this.cartData[index].checked) {
-					this.allPrice = price * (this.cartData[index].num)
+			add(id,num,price,index){
+				this.addNum(id)
+				setTimeout(()=>{
+					this.getCartData()
+				},100)
+				if(this.$refs.check[index].checked){
+					this.allPrice += price
+					this.n += 1
 				}
-				
+			},
+			update(id){
+				this.updateData(id)
+				setTimeout(()=>{
+					this.getCartData()
+				},100)
+			},
+			flag(index,price,num){
+				var check = this.$refs.check[index].checked
+				var allCheck = this.$refs.check
+				for(var i = 0; i < allCheck.length; i++){
+					if(allCheck[i].checked == true){
+						for(var j = allCheck.length-1; j >= 0; j--){
+							if(allCheck[j].checked == true){
+								this.checked = true
+							}else{
+								this.checked = false
+							}
+						}
+					}else{
+						this.checked = false
+					}
+				}
+				if(check){
+					this.allPrice +=price*num
+					this.n += num
+				}else{
+					var itemPrice = price*num
+					this.allPrice -= itemPrice
+					this.n -= num
+				}
+			},
+			all(){
+				var allCheck = this.$refs.check
+				var sum = 0
+				var x = 0
+				if(!this.checked){
+					for(var i = 0; i < allCheck.length; i++){
+						allCheck[i].checked = true
+					}
+					for(var j = 0; j < this.cartData.length; j++){
+						sum += (this.cartData[j].num*this.cartData[j].pro_price)
+						x += this.cartData[j].num
+					}
+					this.allPrice = sum
+					this.n = x
+				}else{
+					for(var i = 0; i < allCheck.length; i++){
+						allCheck[i].checked = false
+						this.allPrice = 0
+						this.n = 0
+					}
+				}
 			}
+//			open2() {
+//      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+//        confirmButtonText: '确定',
+//        cancelButtonText: '取消',
+//        type: 'warning'
+//      }).then(() => {
+//        this.$message({
+//          type: 'success',
+//          message: '删除成功!'
+//        });
+//      }).catch(() => {
+//        this.$message({
+//          type: 'info',
+//          message: '已取消删除'
+//        });          
+//      });
+//    }
+    
 		},
 		computed: {
 			...mapGetters('cart', [
 				'cartData'
 			])
+		},
+		mounted(){
+			this.getCartData()
 		}
 	}
 </script>
@@ -95,10 +190,15 @@
 		line-height: 44px;
 		display: flex;
 		background: #fff;
-		margin-bottom: 10px;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 1000;
+		border-bottom: 1px solid #E6E6E6;
 	}
 	.main {
 		flex: 1;
+		margin-top: 44px;
 	}
 	.back, .tit {
 		width: 60px;
@@ -110,6 +210,9 @@
 		background: #fff;
 		margin-bottom: 10px;
 		position: relative;
+	}
+	.pro_item:last-child {
+		margin-bottom: 80px;
 	}
 	.title {
 		text-align: center;
@@ -144,6 +247,10 @@
 	.pro_text {
 		margin-top: 40px;
 	}
+	.pro_text p {
+		width: 200px;
+		line-height: 20px;
+	}
 	.pro_num span {
 		float: left;
 	}
@@ -165,7 +272,22 @@
 	.pro_num {
 		position: absolute;
 		right: 10px;
-		bottom: 10px;
+		bottom: 20px;
+	}
+	.subBtn {
+		position: absolute;
+		right: 17px;
+		bottom: 0;
+	}
+	.subBtn a {
+		font-size: 16px;
+		color: #666666;
+	}
+	.nullCart {
+		height: 44px;
+		font-size: 14px;
+		line-height: 44px;
+		text-align: center;
 	}
 	.footer {
 		position: fixed;
@@ -173,6 +295,7 @@
 		width: 100%;
 		background: #fff;
 		bottom: 0;
+		z-index: 1000;
 	}
 	.allCheack, .allPrcie {
 		float: left;
@@ -181,8 +304,8 @@
 		margin: 16px 0 0 10px;
 	}
 	.allPrcie {
-		margin-left: 100px;
-		margin-top: 12px;
+		margin-left: 10px;
+		margin-top: 10px;
 	}
 	.allPrcie em {
 		font-size: 20px;
@@ -197,5 +320,7 @@
 		text-align: center;
 		background: red;
 		border: none;
+		color: #fff;
+		font-size: 14px;
 	}
 </style>

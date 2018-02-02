@@ -1,6 +1,6 @@
 <template>
 <div id="bigBox">
-  <v-header></v-header>
+  <v-header :tit="username"></v-header>
   <div id="center">
 		<div class="slide">
 			<mt-swipe :defaultIndex=2 :showIndicators='false' :auto="4000">
@@ -220,6 +220,7 @@
 		name:'home',
 		data(){
 			return {
+				username: ''
 			}
 		},
 		computed:{
@@ -237,6 +238,18 @@
 			this.getNavData();
 			this.getNewYearData();
 			this.getBrandData()
+			this.username = this.$route.params.username
+			
+			var token = window.localStorage.getItem("token") //获取token
+			if(token){
+				axios.get("http://localhost:3000/requiresAuth?token="+token).then(res=>{
+		      if(res.data.msgCode==1){
+		        this.username = res.data.username
+		      }
+		    })
+			}
+	    
+			
 		}
 	}
 </script>

@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<div class="header">Header</div>
+		<div class="header">分类商品</div>
 		<div class="content">
 			<div class="classList">
 				<ul>
@@ -13,23 +13,23 @@
 						<img :src="classData.imgSrc" alt="" />
 					</a>
 				</div>
-				<div class="product_cont" v-for="ele in classData.classData">
+				<div class="product_cont" v-for="(ele,i) in classData.classData">
 					<p class="product_title">
 						<span>{{ele.title}}</span>
 						<span>></span>
 					</p>
 					<ul>
-						<li class="product_item" v-for="item in ele.pics">
-							<a href="javascript:;" class="item_img">
+						<li class="product_item" v-for="(item,index) in ele.itemData">
+							<a @click="toDetale(item.price,item.pics,item.name,item.english,item.des,i,index)" href="javascript:;" class="item_img">
 								<img :src="item.pics" alt="" />
 							</a>
-							<p class="item_title">{{item.title}}</p>
+							<p class="item_title">{{item.cont}}</p>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<div class="footer">Footer</div>
+		<v-footer class="footer"></v-footer>
 	</div>
 </template>
 
@@ -51,7 +51,8 @@
 		methods: {
 			...mapActions('product', [
 				'getClassList',
-				'getClassData'
+				'getClassData',
+				'getDetailData'
 			]),
 			getIndex(index) {
 				for(var i = 0;i < this.$refs.li.length; i++) {
@@ -61,6 +62,14 @@
 				this.$refs.li[index].style.background = '#fff'
 				this.$refs.li[index].style.color = 'red'
 				this.getClassData(index+1)
+			},
+			toDetale(price,pics,name,english,des,i,index){
+				var id = `${i}${index}`
+				var params = {
+					price,pics,name,english,des,id
+				}
+				this.getDetailData(params)
+				this.$router.push({path:"/detail"})
 			}
 		},
 		mounted () {
@@ -78,14 +87,15 @@
 		text-align: center;
 		position: fixed;
 		top:0;
-		background: red;
+		background: #fff;
+		border-bottom: 1px solid #EEEEEE;
 	}
 	.content {
 		margin-top: 44px;
 	}
 	.classList {
 		position: fixed;
-		top: 44px;
+		top: 45px;
 		left: 0;
 		width: 90px;
 		height: 649px;
@@ -139,12 +149,8 @@
 		margin: 10px;
 	}
   .footer {
-		height: 56px;
-		width: 100%;
-		line-height: 56px;
-		text-align: center;
 		position: fixed;
 		bottom:0;
-		background: red;
+		background: #fff;
 	}
 </style>

@@ -2,26 +2,7 @@ import axios from 'axios'
 export default {
  	namespaced: true,
  	state: {
- 		cartData: [
-	 		{
-	 			id: 1,
-	 			pro_img: "https://ssl3.sephorastatic.cn/products/4/2/2/0/1/0/1_n_05748_350x350.jpg",
-	 			pro_name: "克丽丝汀迪奥未来新肌精华",
-	 			pro_row: "规格:唤采光泽",
-	 			pro_price: "790.00",
-	 			checked: true,
-	 			num: 1
-	 		},
-	 		{
-	 			id: 2,
-	 			pro_img: "https://ssl3.sephorastatic.cn/products/4/2/2/0/1/0/1_n_05748_350x350.jpg",
-	 			pro_name: "克丽丝汀迪奥未来新肌精华",
-	 			pro_row: "规格:唤采光泽",
-	 			pro_price: "790.00",
-	 			checked: true,
-	 			num: 1
-	 		}
- 		]
+ 		cartData: []
  	},
  	getters: {
  		cartData: function(state) {
@@ -29,13 +10,24 @@ export default {
  		}
  	},
  	mutations: {
- 		setCartData(){
- 			
+ 		setCartData(state, cartData){
+ 			state.cartData = cartData
  		}
  	},
  	actions: {
- 		getCartData(){
- 			
- 		}
+ 		getCartData(context){
+ 			axios('http://10.9.171.35:3000/product/cartData').then(res=>{
+ 				context.commit('setCartData',res.data)
+ 			})
+ 		},
+		addNum(context, id){
+			axios('http://10.9.171.35:3000/product/addNum?id='+id).then(res=>{})
+		},
+		subNum(context, id){
+			axios('http://10.9.171.35:3000/product/subNum?id='+id).then(res=>{})
+		},
+		updateData(context,id){
+			axios('http://10.9.171.35:3000/product/update?id='+id).then(res=>{})
+		}
  	}
  }

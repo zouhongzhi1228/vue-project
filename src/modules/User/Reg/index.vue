@@ -13,6 +13,7 @@
 </template>
 
 <script>
+	
 	import { Toast } from 'mint-ui'
 	import {mapGetters,mapActions} from 'vuex'
 	export default {
@@ -43,7 +44,7 @@
 							  duration: 3000
 							})
 							setTimeout(()=>{
-								location.href = '/#/login'
+								this.$router.push({path:"/login"})
 							},3000)
 						} else {
 							Toast({
